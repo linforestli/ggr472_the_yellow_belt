@@ -1,2 +1,2 @@
-# ggr472_the_yellow_belt
+# ggr472 The Yellow Belt
 readme
