@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibGluZm9yZXN0bGkiLCJhIjoiY2xzMjllcDBwMDh6ejJwc
 
 const map = new mapboxgl.Map({
     container: 'main-map', 
-    style: 'mapbox://styles/linforestli/cltdcstsl016c01qk2pyg7f8d',
-    center: [-79.3838, 43.6504],
+    style: 'mapbox://styles/mapbox/light-v11',
+    center: [-79.3838, 43.72],
     zoom: 10,
 });
 
@@ -19,11 +19,7 @@ map.on('load', () => {
         'type': 'fill',
         'source': 'zoning-data',
         'paint': {
-            'fill-color': {
-                'property': 'GEN_ZONE',
-                'type': 'categorical',
-                'paint': {
-                    'fill-color': "#0B0000"}
-        }
-}});
+            'fill-color': 'black'
+        },
+});
 })
