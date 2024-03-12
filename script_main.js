@@ -7,6 +7,24 @@ const map = new mapboxgl.Map({
     zoom: 10,
 });
 
+map.addControl(new mapboxgl.NavigationControl());
+
+// Add fullscreen option to the map
+map.addControl(new mapboxgl.FullscreenControl());
+
+// Geocoder
+
+// Create geocoder variable, only show Toronto area results
+const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    countries: "ca",
+    place: "Toronto"
+});
+// Position geocoder on page
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+
 map.on('load', () => {
     // Add wards layer to the map
     map.addSource('zoning-data', {
@@ -14,12 +32,48 @@ map.on('load', () => {
         data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/Zoning Area.geojson' // Link to the data source
     });
 
+    map.addSource('zoning-height', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/Zoning Height Overlay.geojson'
+    })
+
     map.addLayer({
         'id': 'zoning-polygon',
         'type': 'fill',
         'source': 'zoning-data',
         'paint': {
-            'fill-color': 'black'
+            'fill-color': {
+                property: 'GEN_ZONE',
+                stops: [
+                  [0, '#F7DC6F'],
+                  [1, '#7DCEA0'],
+                  [2, '#5D6D7E'],
+                  [4, '#AF7AC5'],
+                  [5, '#85C1E9'],
+                  [6, '#784212'],
+                  [101, '#F0B27A'],
+                  [201, '#FAB2E3'],
+                  [202, '#EC7063']
+                ]
+              },
+              'fill-opacity': 1
         },
-});
+    });
+
+    map.addLayer({
+        'id': 'height-polygon',
+        'type': 'fill',
+        'source': 'zoning-height',
+        'paint': {
+            'fill-color': '#DEDEDE',
+            'fill-opacity': 0.4,
+            'fill-outline-color': 'black'
+        },
+    });
 })
+
+map.on('click', 'height-polygon', (e) => {
+    new mapboxgl.Popup() //Declare new popup object on each click
+        .setLngLat(e.lngLat) //Use method to set coordinates of popup based on mouse click location
+        .setHTML("<b>Permitted maximum height (in m): </b> " + e.features[0].properties.HT_LABEL).addTo(map); //Show popup on map
+});

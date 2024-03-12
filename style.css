@@ -83,3 +83,24 @@
     bottom: 0;
     width: 100%
 }
+
+.geocoder {
+  position: relative;
+  margin: 10px 0 10px;
+}
+
+.navbar {
+  z-index: 1;
+}
+
+.map-search-container {
+  position: relative;
+  font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  background: rgba(255, 255, 255, 0.8);
+  top: 0;
+  left: 0;
+  width: 260px;
+  margin: 10px 0 0 10px;
+  padding: 10px;
+  overflow: visible;
+}
