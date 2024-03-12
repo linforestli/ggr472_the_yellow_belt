@@ -77,3 +77,55 @@ map.on('click', 'height-polygon', (e) => {
         .setLngLat(e.lngLat) //Use method to set coordinates of popup based on mouse click location
         .setHTML("<b>Permitted maximum height (in m): </b> " + e.features[0].properties.HT_LABEL).addTo(map); //Show popup on map
 });
+
+
+
+/*--------------------------------------------------------------------
+CREATE LEGEND IN JAVASCRIPT
+--------------------------------------------------------------------*/
+//Declare array variables for labels and colours
+const legendlabels = [
+    'Residential',
+    'Open Space',
+    'Utility and Transportation',
+    'Employment Industrial',
+    'Institutional',
+    'Commercial Residential Employment',
+    'Residential Appartment',
+    'Commercial',
+    'Commercial Residential'
+];
+
+const legendcolours = [
+    '#F7DC6F',
+    '#7DCEA0',
+    '#5D6D7E',
+    '#AF7AC5',
+    '#85C1E9',
+    '#784212',
+    '#F0B27A',
+    '#FAB2E3',
+    '#EC7063'
+];
+
+//Declare legend variable using legend div tag
+const legend = document.getElementById('legend');
+
+//For each layer create a block to put the colour and label in
+legendlabels.forEach((label, i) => {
+    const colour = legendcolours[i];
+
+    const item = document.createElement('div'); //each layer gets a 'row' - this isn't in the legend yet, we do this later
+    const key = document.createElement('span'); //add a 'key' to the row. A key will be the colour circle
+
+    key.className = 'legend-key'; //the key will take on the shape and style properties defined in css
+    key.style.backgroundColor = colour; // the background color is retreived from teh layers array
+
+    const value = document.createElement('span'); //add a value variable to the 'row' in the legend
+    value.innerHTML = `${label}`; //give the value variable text based on the label
+
+    item.appendChild(key); //add the key (colour cirlce) to the legend row
+    item.appendChild(value); //add the value to the legend row
+
+    legend.appendChild(item); //add row to the legend
+});
