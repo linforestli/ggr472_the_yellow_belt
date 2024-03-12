@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GGR472 Group Project</title>
+    
      <!-- mapbox API -->
      <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
      <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
@@ -49,6 +50,12 @@
         </div>
     </nav>
     <div id="main-map" class="main-map-container"></div>
+    <!-- NAVIGATION ELEMENTS -->
+    <div class='map-search-container'>
+        <label>Search for location</label>
+        <div id="geocoder" class="geocoder"></div>
+        <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+    </div>
     <script src="script_main.js"></script>
 </body>
 </html>
