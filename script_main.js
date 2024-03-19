@@ -3,8 +3,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibGluZm9yZXN0bGkiLCJhIjoiY2xzMjllcDBwMDh6ejJwc
 const map = new mapboxgl.Map({
     container: 'main-map', 
     style: 'mapbox://styles/mapbox/light-v11',
-    center: [-79.381, 43.65],
-    zoom: 15.5,
+    center: [-79.381, 43.67],
+    zoom: 12,
     pitch: 45,
     bearing: -17.6
 });
@@ -97,10 +97,10 @@ map.on('load', () => {
                 'interpolate',
                 ['linear'],
                 ['zoom'],
-                15,
+                5,
                 0,
-                15.05,
-                ['get', 'height']
+                5.05,
+                ['*', ['get', 'height'], 3] // multiply the height by 3 to get a better contrast
             ],
             'fill-extrusion-opacity': 0.6
         },
@@ -129,10 +129,10 @@ map.on('load', () => {
                 'interpolate',
                 ['linear'],
                 ['zoom'],
-                15,
+                5,
                 0,
-                15.05,
-                ['get', 'height']
+                5.05,
+                ['*', ['get', 'height'], 3]
             ],
             'fill-extrusion-opacity': 0.6
         },
@@ -158,10 +158,10 @@ map.on('load', () => {
                 'interpolate',
                 ['linear'],
                 ['zoom'],
-                15,
+                5,
                 0,
-                15.05,
-                ['get', 'height']
+                5.05,
+                ['*', ['get', 'height'], 3]
             ],
             'fill-extrusion-opacity': 0.6
         },
@@ -186,10 +186,10 @@ map.on('load', () => {
                 'interpolate',
                 ['linear'],
                 ['zoom'],
-                15,
+                5,
                 0,
-                15.05,
-                ['get', 'height']
+                5.05,
+                ['*', ['get', 'height'], 3]
             ],
             'fill-extrusion-opacity': 0.6
         },
@@ -213,10 +213,10 @@ map.on('load', () => {
                 'interpolate',
                 ['linear'],
                 ['zoom'],
-                15,
+                5,
                 0,
-                15.05,
-                ['get', 'height']
+                5.05,
+                ['*', ['get', 'height'], 3]
             ],
             'fill-extrusion-opacity': 0.6
         },
