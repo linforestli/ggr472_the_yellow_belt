@@ -68,8 +68,59 @@ map.on('load', () => {
             'fill-color': '#DEDEDE',
             'fill-opacity': 0.4,
             'fill-outline-color': 'black'
+            
         },
     });
+
+    var activeCategories = {};
+
+function updateVisibility() {
+    var filter = ['any']; // Initialize with 'any' to ensure at least one condition is true
+
+    for (var categoryId in activeCategories) {
+        if (activeCategories.hasOwnProperty(categoryId)) {
+            filter.push(['==', 'GEN_ZONE', parseInt(categoryId)]);
+        }
+    }
+
+    map.setFilter('zoning-polygon', filter);
+}
+
+// Initialize checkboxes and map filter
+function initialize() {
+    // Check all checkboxes by default
+    var categoryIdsToMonitor = ['0', '1', '2', '4', '5', '6', '101', '201', '202'];
+    categoryIdsToMonitor.forEach(function (categoryId) {
+        document.getElementById('gen_zone_' + categoryId).checked = true;
+        activeCategories[categoryId] = true;
+    });
+
+    // Update map filter
+    updateVisibility();
+
+    // Add event listeners for all checkboxes
+    categoryIdsToMonitor.forEach(function (categoryId) {
+        addCheckboxListener(categoryId);
+    });
+}
+
+// Event listener for checkbox change
+function addCheckboxListener(categoryId) {
+    document.getElementById('gen_zone_' + categoryId).addEventListener('change', function () {
+        if (this.checked) {
+            activeCategories[categoryId] = true;
+        } else {
+            delete activeCategories[categoryId];
+        }
+        updateVisibility();
+    });
+}
+
+// Initialize the checkboxes and map filter when the page loads
+initialize();
+
+
+
 })
 
 map.on('click', 'height-polygon', (e) => {

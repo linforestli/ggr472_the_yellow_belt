@@ -104,3 +104,6 @@
   padding: 10px;
   overflow: visible;
 }
+
+.checkbox-container { 
+  position: absolute; top: 60px; right: 10px; background: #fff; padding: 10px; }
