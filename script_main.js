@@ -58,22 +58,56 @@ map.on('load', () => {
         },
     });
 
-    // add yellow belt layer
-    map.addSource('zoning-height', {
+    // add residential zone - yellow belt layer
+    map.addSource('rd_detached', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/Zoning Height Overlay.geojson'
+        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/rd_detached.geojson'
     });
 
     map.addLayer({
-        'id': 'height-polygon',
+        'id': 'yellowbelt',
         'type': 'fill',
-        'source': 'zoning-height',
+        'source': 'rd_detached',
         'paint': {
-            'fill-color': '#DEDEDE',
-            'fill-opacity': 0.4,
-            'fill-outline-color': 'black'
+            'fill-color': '#FFFF00',
+            'fill-opacity': 1,
+            //'fill-outline-color': 'black'
         },
     });
+
+    // add residential zone - mixed use layer
+    map.addSource('rd_mix', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/rd_mixed_use.geojson'
+    });
+
+    map.addLayer({
+        'id': 'mixed_use',
+        'type': 'fill',
+        'source': 'rd_mix',
+        'paint': {
+            'fill-color': '#9999FF',
+            'fill-opacity': 1,
+            //'fill-outline-color': 'black'
+        },
+    });
+
+    // add residential zone - others layer
+    map.addSource('rd_other', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/rd_other.geojson'
+    });
+
+    map.addLayer({
+        'id': 'others',
+        'type': 'fill',
+        'source': 'rd_other',
+        'paint': {
+            'fill-color': '#99CCFF',
+            'fill-opacity': 1,
+            //'fill-outline-color': 'black'
+        },
+    }); 
 
     // add building layer 1
     map.addSource('building-height1', {
