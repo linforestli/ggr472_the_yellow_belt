@@ -76,7 +76,18 @@ map.on('load', () => {
     // add builfing layer
     map.addSource('building-height4', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/building height/Zoning Height Overlay.geojson'
+        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/building%20height/building4.geojson'
+    });
+
+    map.addLayer({
+        'id': 'building_height_fill',
+        'type': 'fill',
+        'source': 'building-height4',
+        'paint': {
+            'fill-color': 'blue'
+
+        },
+
     });
 
 })
