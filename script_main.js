@@ -26,17 +26,13 @@ document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
 
 map.on('load', () => {
-    // Add wards layer to the map
+    // Add sapce category layer to the map
     map.addSource('zoning-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/Zoning Area.geojson' // Link to the data source
     });
 
-    map.addSource('zoning-height', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/Zoning Height Overlay.geojson'
-    })
-
+    
     map.addLayer({
         'id': 'zoning-polygon',
         'type': 'fill',
@@ -60,6 +56,12 @@ map.on('load', () => {
         },
     });
 
+    // add yellow belt layer
+    map.addSource('zoning-height', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/Zoning Height Overlay.geojson'
+    });
+
     map.addLayer({
         'id': 'height-polygon',
         'type': 'fill',
@@ -70,6 +72,13 @@ map.on('load', () => {
             'fill-outline-color': 'black'
         },
     });
+
+    // add builfing layer
+    map.addSource('building-height4', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/building height/Zoning Height Overlay.geojson'
+    });
+
 })
 
 map.on('click', 'height-polygon', (e) => {
