@@ -93,20 +93,6 @@
   z-index: 1;
 }
 
-.map-search-container {
-  position: relative;
-  font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  background: rgba(255, 255, 255, 0.8);
-  top: 0;
-  left: 0;
-  width: 260px;
-  margin: 10px 0 0 10px;
-  padding: 10px;
-  overflow: visible;
-}
-
-.checkbox-container { 
-  position: absolute; top: 60px; right: 10px; background: #fff; padding: 10px; }
 
 .legend {
   position: absolute;
@@ -133,3 +119,22 @@
   width: 10px;
   margin-right: 5px; /*position of circle*/
 }
+
+.map-overlay {
+  position: relative;
+  font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  background: #fff;
+  top: 0;
+  left: 0;
+  width: 350px;
+  margin: 60px 10px 0 10px;
+  padding: 10px;
+  overflow: visible;
+  border-radius:8px;
+}
+
+
+.mapboxgl-ctrl.mapboxgl-ctrl-group { position: absolute; top: 60px; right: 5px;}
+
+
+

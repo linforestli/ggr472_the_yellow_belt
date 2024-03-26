@@ -15,8 +15,14 @@
          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.2/mapbox-gl-geocoder.css"
          type="text/css">
      <!-- Bootstrap -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
      <!-- CSS -->
      <link rel="stylesheet" href="style.css">
 </head>
@@ -49,30 +55,139 @@
             </div>
         </div>
     </nav>
-    <div id="main-map" class="main-map-container"></div>
-    <!-- NAVIGATION ELEMENTS -->
-    <div class='map-search-container'>
-        <label>Search for location</label>
-        <div id="geocoder" class="geocoder"></div>
-        <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
-    </div>
+    <div id="main-map" class="main-map-container"></div>   
 
     <!-- LEGEND -->
     <div id='legend' class='legend'>
-        <h4>Space Category</h4>
     </div>
-    <!-- space category checkbox -->
-    <div class="checkbox-container">
-        <input type="checkbox" id="gen_zone_0"><label for="gen_zone_0">Residential</label><br>
-        <input type="checkbox" id="gen_zone_1"><label for="gen_zone_1">Open Space</label><br>
-        <input type="checkbox" id="gen_zone_2" checked><label for="gen_zone_2">Utility and Transportation</label><br>
-        <input type="checkbox" id="gen_zone_4" checked><label for="gen_zone_4">Employment Industrial</label><br>
-        <input type="checkbox" id="gen_zone_5" checked><label for="gen_zone_5">Institutional</label><br>
-        <input type="checkbox" id="gen_zone_6" checked><label for="gen_zone_6">Commercial Residential Employment</label><br>
-        <input type="checkbox" id="gen_zone_101" checked><label for="gen_zone_101">Residential Apartment</label><br>
-        <input type="checkbox" id="gen_zone_201" checked><label for="gen_zone_201">Commercial</label><br>
-        <input type="checkbox" id="gen_zone_202" checked><label for="gen_zone_202">Commercial Residential</label><br>
-      </div>
+
+    <!-- nav elements -->
+    <div class='map-overlay'>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Search
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                        <div class='map-search-container'>
+                            <label>Search for location</label>
+                            <div id="geocoder" class="geocoder"></div>
+                            <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- space category checkbox -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Space Category
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="list-group my-2">
+                            <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_0"><label for="gen_zone_0">Residential</label><br>
+                            </label>
+                            <label class="list-group-item" id="Open space">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_1"><label for="gen_zone_1">Open Space</label><br>
+                            </label>
+                            <label class="list-group-item" id="UANDT">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_2" checked><label for="gen_zone_2">Utility and Transportation</label><br>
+                            </label>
+                            <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_4" checked><label for="gen_zone_4">Employment Industrial</label><br>
+                            </label>
+                            <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_5" checked><label for="gen_zone_5">Institutional</label><br>
+                            </label>
+                            <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_6" checked><label for="gen_zone_6">Commercial Residential Employment</label><br>
+                            </label>
+                            <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_101" checked><label for="gen_zone_101">Residential Apartment</label><br>
+                            </label>
+                            <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_201" checked><label for="gen_zone_201">Commercial</label><br>
+                            </label>
+                            <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="gen_zone_202" checked><label for="gen_zone_202">Commercial Residential</label><br>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- residential zone checkbox -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Residential Zone
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="list-group my-2">
+                        <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="detachedCheckbox"><label for="detachedCheckbox">Single Detached Zones (Yellowbelt)</label><br>
+                        </label>
+                        <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="mixedCheckbox"><label for="mixedCheckbox">Mixed Use Zones</label><br>
+                        </label>
+                        <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="otherCheckbox"><label for="otherCheckbox">Other Residential Zones</label><br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Building height checkbox -->
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Building Height
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="list-group my-2">
+                        <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="height1Checkbox" checked><label for="height1Checkbox">0 - 5.6m</label><br>
+                        </label>
+                        <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="height2Checkbox" checked><label for="height2Checkbox">5.6 - 25m</label><br>
+                        </label>
+                        <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="height3Checkbox" checked><label for="height3Checkbox">25 - 80m</label><br>
+                        </label>
+                        <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="height4Checkbox" checked><label for="height4Checkbox">80 - 256m</label><br>
+                        </label>
+                        <label class="list-group-item" id="Residential">
+                            <input class="form-check-input me-1" type="checkbox" id="height5Checkbox" checked><label for="height5Checkbox">256 - 545m</label><br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
     <script src="script_main.js"></script>
 </body>
 </html>

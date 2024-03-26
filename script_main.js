@@ -6,13 +6,15 @@ const map = new mapboxgl.Map({
     center: [-79.381, 43.67],
     zoom: 12,
     pitch: 45,
-    bearing: -17.6
+    bearing: -17.6,
+    minZoom: 9,
+    maxZoon: 15
 });
 
-map.addControl(new mapboxgl.NavigationControl());
 
-// Add fullscreen option to the map
-map.addControl(new mapboxgl.FullscreenControl());
+// Add map controls 
+map.addControl(new mapboxgl.NavigationControl());
+// map.addControl(new mapboxgl.FullscreenControl());
 
 // Geocoder
 
@@ -25,9 +27,23 @@ const geocoder = new MapboxGeocoder({
 });
 // Position geocoder on page
 document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+// Add event listener for full screen on button click
+document.getElementById('returnbutton').addEventListener('click', () => {
+    map.flyTo({
+        center: [-79.381, 43.67],
+        zoom: 12,
+        pitch: 45,
+        bearing: -17.6
+        
+    });
+});
 
 
 map.on('load', () => {
+
+    /*--------------------------------------------------------------------
+    Space Categories
+    --------------------------------------------------------------------*/
     // Add sapce category layer to the map
     map.addSource('zoning-data', {
         type: 'geojson',
@@ -58,27 +74,9 @@ map.on('load', () => {
         },
     });
 
-    // add residential zone - yellow belt layer
-    map.addSource('rd_detached', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/rd_detached.geojson'
-    });
-
-    map.addLayer({
-        'id': 'yellowbelt',
-        'type': 'fill',
-        'source': 'rd_detached',
-        'paint': {
-            'fill-color': '#FFFF00',
-            'fill-opacity': 1,
-            //'fill-outline-color': 'black'
-            
-        },
-    });
-
     var activeCategories = {};
 
-function updateVisibility() {
+    function updateVisibility() {
     var filter = ['any']; // Initialize with 'any' to ensure at least one condition is true
 
     for (var categoryId in activeCategories) {
@@ -88,7 +86,7 @@ function updateVisibility() {
     }
 
     map.setFilter('zoning-polygon', filter);
-}
+    }
 
 // Initialize checkboxes and map filter
 function initialize() {
@@ -120,11 +118,36 @@ function addCheckboxListener(categoryId) {
     });
 }
 
+
+
 // Initialize the checkboxes and map filter when the page loads
 initialize();
+    /*--------------------------------------------------------------------
+    Yellow Belt
+    --------------------------------------------------------------------*/
 
+    // add residential zone - yellow belt layer
+    map.addSource('rd_detached', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/linforestli/ggr472_the_yellow_belt/main/Data/rd_detached.geojson'
+    });
 
-    
+    map.addLayer({
+        'id': 'yellowbelt',
+        'type': 'fill',
+        'source': 'rd_detached',
+        'paint': {
+            'fill-color': '#FFFF00',
+            'fill-opacity': 1,
+            //'fill-outline-color': 'black'
+            
+        },
+        'layout': {
+            // Make the layer invisible by default.
+            'visibility': 'none'
+        }
+
+    });
 
     // add residential zone - mixed use layer
     map.addSource('rd_mix', {
@@ -137,10 +160,14 @@ initialize();
         'type': 'fill',
         'source': 'rd_mix',
         'paint': {
-            'fill-color': '#9999FF',
+            'fill-color': '#C2B280',
             'fill-opacity': 1,
             //'fill-outline-color': 'black'
         },
+        'layout': {
+            // Make the layer invisible by default.
+            'visibility': 'none'
+        }
     });
 
     // add residential zone - others layer
@@ -154,11 +181,56 @@ initialize();
         'type': 'fill',
         'source': 'rd_other',
         'paint': {
-            'fill-color': '#99CCFF',
+            'fill-color': '#FFDEAD',
             'fill-opacity': 1,
             //'fill-outline-color': 'black'
         },
+        'layout': {
+            // Make the layer invisible by default.
+            'visibility': 'none'
+        }
     }); 
+
+    // Get reference to the checkbox
+    const detachedCheckbox = document.getElementById('detachedCheckbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    detachedCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('yellowbelt', 'visibility', 'visible');
+        } else {
+        map.setLayoutProperty('yellowbelt', 'visibility', 'none');
+        }
+    });
+
+    // Get reference to the checkbox
+    const mixedCheckbox = document.getElementById('mixedCheckbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    mixedCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('mixed_use', 'visibility', 'visible');
+        } else {
+        map.setLayoutProperty('mixed_use', 'visibility', 'none');
+        }
+    });
+
+    // Get reference to the checkbox
+    const otherCheckbox = document.getElementById('otherCheckbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    otherCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('others', 'visibility', 'visible');
+        } else {
+        map.setLayoutProperty('others', 'visibility', 'none');
+        }
+    });
+
+
+    /*--------------------------------------------------------------------
+    Building Height
+    --------------------------------------------------------------------*/
 
     // add building layer 1
     map.addSource('building-height1', {
@@ -201,7 +273,7 @@ initialize();
     map.addLayer({
         'id': 'building_height_fill2',
         'type': 'fill-extrusion', 
-        'source': 'building-height1',
+        'source': 'building-height2',
         'source-layer': 'building2-az3hvx',
 
         'paint': {
@@ -307,13 +379,68 @@ initialize();
         },
     });
 
+    // Get reference to the checkbox
+    const height1Checkbox = document.getElementById('height1Checkbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    height1Checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('building_height_fill1', 'visibility', 'visible');
+        } else {
+        map.setLayoutProperty('building_height_fill1', 'visibility', 'none');
+        }
+    });
+
+    // Get reference to the checkbox
+    const height2Checkbox = document.getElementById('height2Checkbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    height2Checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('building_height_fill2', 'visibility', 'visible');
+        } else {
+        map.setLayoutProperty('building_height_fill2', 'visibility', 'none');
+        }
+    });
+
+    // Get reference to the checkbox
+    const height3Checkbox = document.getElementById('height3Checkbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    height3Checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('building_height_fill3', 'visibility', 'visible');
+        } else {
+        map.setLayoutProperty('building_height_fill3', 'visibility', 'none');
+        }
+    });
+
+    // Get reference to the checkbox
+    const height4Checkbox = document.getElementById('height4Checkbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    height4Checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('building_height_fill4', 'visibility', 'visible');
+        } else {
+        map.setLayoutProperty('building_height_fill4', 'visibility', 'none');
+        }
+    });
+
+    // Get reference to the checkbox
+    const height5Checkbox = document.getElementById('height5Checkbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    height5Checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('building_height_fill5', 'visibility', 'visible');
+        } else {
+        map.setLayoutProperty('building_height_fill5', 'visibility', 'none');
+        }
+    });
+
 });
 
-map.on('click', 'height-polygon', (e) => {
-    new mapboxgl.Popup() //Declare new popup object on each click
-        .setLngLat(e.lngLat) //Use method to set coordinates of popup based on mouse click location
-        .setHTML("<b>Permitted maximum height (in m): </b> " + e.features[0].properties.HT_LABEL).addTo(map); //Show popup on map
-});
 
 
 
@@ -330,7 +457,11 @@ const legendlabels = [
     'Commercial Residential Employment',
     'Residential Appartment',
     'Commercial',
-    'Commercial Residential'
+    'Commercial Residential',
+    '',
+    'Single Detached Zones (Yellowbelt)',
+    'Mixed Use Zones',
+    'Other Residential Zones'
 ];
 
 const legendcolours = [
@@ -342,7 +473,12 @@ const legendcolours = [
     '#784212',
     '#F0B27A',
     '#FAB2E3',
-    '#EC7063'
+    '#EC7063',
+    '#FFFFFF',
+    '#FFFF00',
+    '#C2B280',
+    '#FFDEAD'
+
 ];
 
 //Declare legend variable using legend div tag
