@@ -38,11 +38,6 @@
         </div>
     </nav>
 
-    <div class="container text-center">
-        <h5>Future Actions</h5>
-
-    </div>
-
     <!-- Tab links -->
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Tab1')">Outside the Yellow Belt</button>
@@ -50,16 +45,81 @@
     </div>
   
     <!-- Tab content -->
-    <div id="Tab1" class="tabcontent">
-        <h3>Outside the Yellow Belt</h3>
+    <div id="Tab1" class="container">
+        <br>
+        <h5>Future Actions Outside the Yellow Belt: Development Opportunities</h5>
         <div id="outside-map" class="map-container"></div>
+        <script src="script_future.js"></script> 
     </div>
   
-    <div id="Tab2" class="tabcontent">
-        <h3>Inside the Yellow Belt</h3>
+    <div id="Tab2" class="container">
+        <!-- insert image -->
+        <img src="image/torontomap.png" class="img-fluid">
+        <br>
+        <br>
+        <h5><strong>Future Actions Inside the Yellow Belt: Housing Solutions</strong></h5>
+        <br>
+        <p>
+            In addition to exploring the potential relaxation of zoning restrictions within Toronto's yellowbelt 
+            to accommodate a broader spectrum of housing options, innovative solutions are emerging to address the affordability challenge. 
+            Urban designers and architects are actively engaged in reimagining the existing housing stock within the yellowbelt, 
+            with a focus on converting single detached homes into multiplexes through thoughtful design interventions. 
+        </p>
+        <p>
+            This approach not only maximizes land utilization but also fosters greater housing diversity within established neighborhoods. 
+            This adaptive reuse strategy offers residents a range of affordable housing choices within the confines of the yellowbelt's 
+            zoning constraints. By repurposing and adapting existing structures, these initiatives also strive to 
+            preserve the unique character and charm of the yellowbelt communities.
+        </p>
+        <br>
+
+        <!-- insert cards -->
+    <div class="container">
+        <div class="row row-cols-2 row-cols-md-3">
+
+            <div class="col">
+                <div class="card" style="width: 24rem;">
+                    <img class="card-img-top" src="image/rehousing.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">ReHousing.ca</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a target="_blank" href="https://rehousing.ca/" class="btn btn-outline-warning">Go to ReHousing.ca</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card" style="width: 24rem;">
+                    <img class="card-img-top" src="image/rehousing.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">ReHousing.ca</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a target="_blank" href="https://rehousing.ca/" class="btn btn-outline-warning">Go to ReHousing.ca</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card" style="width: 24rem;">
+                    <img class="card-img-top" src="image/rehousing.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">ReHousing.ca</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a target="_blank" href="https://rehousing.ca/" class="btn btn-outline-warning">Go to ReHousing.ca</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        
+
+    
+
         <div id="inside-map" class="map-container"></div>
     </div>
   
-    <script src="script_future.js"></script>
+
 </body>
 </html>
