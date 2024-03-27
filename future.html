@@ -13,9 +13,11 @@
 
 <body>
     <!-- Set nav bar to navigate back to home page -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg" style="background-color: #FFF9C4;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Re-imagine Toronto's Yellowbelt</a>
+            <a class="navbar-brand" href="index.html">
+                <img src="image/logo2.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                Re-imagine Toronto's Yellowbelt</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -40,84 +42,108 @@
 
     <!-- Tab links -->
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Tab1')">Outside the Yellow Belt</button>
-        <button class="tablinks" onclick="openTab(event, 'Tab2')">Inside the Yellow Belt</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">Outside the Yellowbelt</button>
+        <button class="tablinks" onclick="openTab(event, 'Tab2')">Inside the Yellowbelt</button>
     </div>
-  
+
     <!-- Tab content -->
-    <div id="Tab1" class="container">
-        <br>
-        <h5>Future Actions Outside the Yellow Belt: Development Opportunities</h5>
-        <div id="outside-map" class="map-container"></div>
-        <script src="script_future.js"></script> 
+    <div id="Tab1" class="tabcontent">
+        <div class="container">
+            <br>
+            <h5><strong>Future Actions Outside the Yellowbelt: Development Opportunities</strong></h5>
+            
+            </div>
     </div>
   
-    <div id="Tab2" class="container">
-        <!-- insert image -->
-        <img src="image/torontomap.png" class="img-fluid">
-        <br>
-        <br>
-        <h5><strong>Future Actions Inside the Yellow Belt: Housing Solutions</strong></h5>
-        <br>
-        <p>
-            In addition to exploring the potential relaxation of zoning restrictions within Toronto's yellowbelt 
-            to accommodate a broader spectrum of housing options, innovative solutions are emerging to address the affordability challenge. 
-            Urban designers and architects are actively engaged in reimagining the existing housing stock within the yellowbelt, 
-            with a focus on converting single detached homes into multiplexes through thoughtful design interventions. 
-        </p>
-        <p>
-            This approach not only maximizes land utilization but also fosters greater housing diversity within established neighborhoods. 
-            This adaptive reuse strategy offers residents a range of affordable housing choices within the confines of the yellowbelt's 
-            zoning constraints. By repurposing and adapting existing structures, these initiatives also strive to 
-            preserve the unique character and charm of the yellowbelt communities.
-        </p>
-        <br>
+    <div id="Tab2" class="tabcontent">
+        <div class="container">
+            <!-- insert image -->
+            <img src="image/torontomap.png" class="img-fluid">
+            <br>
+            <br>
+            <h5><strong>Future Actions Inside the Yellowbelt: Housing Solutions</strong></h5>
+            <br>
+            <p>
+                In addition to exploring the potential relaxation of zoning restrictions within Toronto's yellowbelt 
+                to accommodate a broader spectrum of housing options, innovative solutions are emerging to address the affordability challenge. 
+                Urban designers and architects are actively engaged in reimagining the existing housing stock within the yellowbelt, 
+                with a focus on converting single detached homes into multiplexes through thoughtful design interventions. 
+            </p>
+            <p>
+                This approach not only maximizes land utilization but also fosters greater housing diversity within established neighborhoods. 
+                This adaptive reuse strategy offers residents a range of affordable housing choices within the confines of the yellowbelt's 
+                zoning constraints. By repurposing and adapting existing structures, these initiatives also strive to 
+                preserve the unique character and charm of the yellowbelt communities.
+            </p>
+            <br>
+
+        </div>
 
         <!-- insert cards -->
-    <div class="container">
-        <div class="row row-cols-2 row-cols-md-3">
+        <div id="Tab2" class="container">
+            <div class="row row-cols-2 row-cols-md-3">
 
-            <div class="col">
-                <div class="card" style="width: 24rem;">
-                    <img class="card-img-top" src="image/rehousing.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">ReHousing.ca</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a target="_blank" href="https://rehousing.ca/" class="btn btn-outline-warning">Go to ReHousing.ca</a>
+                <!-- card 1 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="image/rehousing.jpg" alt="Card image cap">
+                        <div class="card-body d-flex flex-column">
+                          <h5 class="card-title"><strong>ReHousing.ca</strong></h5>
+                          <p class="card-text">
+                            The ReHousing initiative hopes to address the issue of housing affordability 
+                            by offering 50 open-source architectural design templates to reconfigure the 
+                            13 most standard Toronto home types into multi-unit dwellings and 
+                            empower citizens to take advantage of new policy changes.
+                        </p>
+                          <a target="_blank" href="https://rehousing.ca/" class="mt-auto btn btn-outline-warning">Go to ReHousing.ca</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col">
-                <div class="card" style="width: 24rem;">
-                    <img class="card-img-top" src="image/rehousing.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">ReHousing.ca</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a target="_blank" href="https://rehousing.ca/" class="btn btn-outline-warning">Go to ReHousing.ca</a>
+                <!-- card 2 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="image/housing.jpg" alt="Card image cap">
+                        <div class="card-body d-flex flex-column">
+                          <h5 class="card-title"><strong>Housing Multitudes</strong></h5>
+                          <p class="card-text">
+                            Using Toronto as a laboratory, the study and exhibition Housing Multitudes: 
+                            Reimagining the Landscapes of Suburbia unlocks the DNA of the suburb to create a 
+                            composite “big picture” of how the urbanism that characterizes many North American cities 
+                            can be transformed for the greater benefit of all.
+                        </p>
+                          <a target="_blank" href="https://www.daniels.utoronto.ca/events/1666305000/opening-housing-multitudes-reimagining-landscapes-suburbia" class="mt-auto btn btn-outline-warning">Go to Housing Multitudes</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col">
-                <div class="card" style="width: 24rem;">
-                    <img class="card-img-top" src="image/rehousing.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">ReHousing.ca</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a target="_blank" href="https://rehousing.ca/" class="btn btn-outline-warning">Go to ReHousing.ca</a>
+                <!-- card 3 -->
+                <div class="col">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="image/smart_density.jpg" alt="Card image cap">
+                        <div class="card-body d-flex flex-column">
+                          <h5 class="card-title"><strong>Smart Density</strong></h5>
+                          <p class="card-text">
+                            Smart Density is an architecture and planning firm dedicated to crafting innovative solutions 
+                            for urban living and achieving smart densities in the urban landscape of Toronto. 
+                            They are specialized in designing efficient, sustainable, and community-centric spaces that 
+                            respond to the evolving needs of the cityscape.
+                        </p>
+                          <a target="_blank" href="https://smartdensity.com/" class="mt-auto btn btn-outline-warning">Go to Smart Density</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <div>
+                    <br>
+                    <br>
+                    <br>
+                </div>
 
         </div>
     </div>
 
-        
-
-    
-
-        <div id="inside-map" class="map-container"></div>
+        <script src="script_future.js"></script>
     </div>
   
 
