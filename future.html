@@ -9,6 +9,16 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="style.css">
+     <!-- Bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <style>.nav-tabs .nav-link {color: #FFBF00}</style>
 </head>
 
 <body>
@@ -40,170 +50,183 @@
     </nav>
 
     <!-- Tab links -->
-    <div class="tab">
+    <!-- <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">Outside the Yellowbelt</button>
         <button class="tablinks" onclick="openTab(event, 'Tab2')">Inside the Yellowbelt</button>
-    </div>
+        class="mt-auto btn btn-outline-warning"
+    </div> -->
 
-    <!-- Tab content -->
-    <!-- Tab 1 -->
-    <div id="Tab1" class="tabcontent">
-        <div class="container">
-            <br>
-            <h5><strong>Future Actions Outside the Yellowbelt: Development Opportunities</strong></h5>
-            <br>
-            <p>
-                Legal attempts to restrict the type, height, and location of buildings date back at least to the 1800s in North America. 
-                Zoning is still a key strategy used by established property owners to try and stop uses of their land 
-                that will drive down the value of their properties. 
-                Facing the “Missing Middle” problem, a wave of debates and proposals has surged. 
-                These discussions center around the topic of relaxing the zoning regulations and 
-                seeking new mixed-used land parcels for development opportunities.
-            </p>
-
-            <div class="row">
-                <!-- Map 1 -->
-                <div class="col-sm-3">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <p>
-                        Within Toronto's residential zones, a significant portion—54.3%—is characterized by single detached dwellings, 
-                        forming the recognizable yellowbelt areas. Beyond this, 39.9% of residential lands offer varied housing typologies 
-                        such as apartments and townhouses, while 5.8% are designated as mixed-use zones blending commercial and 
-                        residential purposes. To explore development opportunities further, 500-meter buffers around subway stations 
-                        are used  in the accompanying map to identify potential sites for mixed-use and mid-rise residential zones. 
-                        These zones, designed for middle-density living, aim to diversify the housing landscape, 
-                        complementing the existing single detached zones within Toronto's yellowbelt.
-                    </p>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Outside the Yellowbelt</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Inside the Yellowbelt</button>
+        </li>
+      </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="container">
+                <br>
+                <h5><strong>Future Actions Outside the Yellowbelt: Development Opportunities</strong></h5>
+                <br>
+                <p>
+                    Legal attempts to restrict the type, height, and location of buildings date back at least to the 1800s in North America. 
+                    Zoning is still a key strategy used by established property owners to try and stop uses of their land 
+                    that will drive down the value of their properties. 
+                    Facing the “Missing Middle” problem, a wave of debates and proposals has surged. 
+                    These discussions center around the topic of relaxing the zoning regulations and 
+                    seeking new mixed-used land parcels for development opportunities.
+                </p>
+    
+                <div class="row">
+                    <!-- Map 1 -->
+                    <div class="col-sm-3">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p>
+                            Within Toronto's residential zones, a significant portion—54.3%—is characterized by single detached dwellings, 
+                            forming the recognizable yellowbelt areas. Beyond this, 39.9% of residential lands offer varied housing typologies 
+                            such as apartments and townhouses, while 5.8% are designated as mixed-use zones blending commercial and 
+                            residential purposes. To explore development opportunities further, 500-meter buffers around subway stations 
+                            are used  in the accompanying map to identify potential sites for mixed-use and mid-rise residential zones. 
+                            These zones, designed for middle-density living, aim to diversify the housing landscape, 
+                            complementing the existing single detached zones within Toronto's yellowbelt.
+                        </p>
+                    </div>
+                    <div class="col-sm-9"><img src="image/development_zones.jpg" class="img-fluid"></div>
+    
+                    <!-- Map 2 -->
+                    <div class="col-sm-3">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p>In 2010, the Growth Plan identified five Urban Growth Centres in Toronto: Downtown/Waterfront, Scarborough Centre, 
+                            North York Centre, Etobicoke Centre and Yonge-Eglinton Centre. These Urban Growth Centres stand as pivotal hubs 
+                            for sustainable urban growth and aim to achieve 400 people plus jobs per hectare by 2031. 
+                            Strategically positioned around transit hubs, they also offer opportunities for development of middle-density 
+                            and mid-rise residential and commercial properties, aiming to create vibrant, transit-oriented communities 
+                            that cater to diverse housing needs while fostering a dynamic, livable cityscape.
+                        </p>
+                    </div>
+                    <div class="col-sm-9"><img src="image/development_urbangrowth.jpg" class="img-fluid"></div>
+    
+                    <!-- Map 3 -->
+                    <div class="col-sm-3">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p>This map depicts the social housing service network in the City of Toronto and the number of social housing units 
+                            per neighborhood. Through various programs and initiatives, such as subsidized housing, rent supplements, 
+                            transitional housing, newcomer service and refugee housing, the city strives to address homelessness, 
+                            housing insecurity, and affordability challenges targeting different groups of people. 
+                            In the choropleth map, we can also see that certain neighborhoods with a higher concentration of social housing units 
+                            also exhibit limited transit accessibility. This underscores the need for the development of transit-oriented and 
+                            walkable alternative housing options, ensuring equitable access to transportation and fostering inclusive, 
+                            livable communities across the city.
+                        </p>
+                    </div>
+                    <div class="col-sm-9"><img src="image/development_socialhousing.jpg" class="img-fluid"></div>
                 </div>
-                <div class="col-sm-9"><img src="image/development_zones.jpg" class="img-fluid"></div>
-
-                <!-- Map 2 -->
-                <div class="col-sm-3">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <p>In 2010, the Growth Plan identified five Urban Growth Centres in Toronto: Downtown/Waterfront, Scarborough Centre, 
-                        North York Centre, Etobicoke Centre and Yonge-Eglinton Centre. These Urban Growth Centres stand as pivotal hubs 
-                        for sustainable urban growth and aim to achieve 400 people plus jobs per hectare by 2031. 
-                        Strategically positioned around transit hubs, they also offer opportunities for development of middle-density 
-                        and mid-rise residential and commercial properties, aiming to create vibrant, transit-oriented communities 
-                        that cater to diverse housing needs while fostering a dynamic, livable cityscape.
-                    </p>
+                
                 </div>
-                <div class="col-sm-9"><img src="image/development_urbangrowth.jpg" class="img-fluid"></div>
-
-                <!-- Map 3 -->
-                <div class="col-sm-3">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <p>This map depicts the social housing service network in the City of Toronto and the number of social housing units 
-                        per neighborhood. Through various programs and initiatives, such as subsidized housing, rent supplements, 
-                        transitional housing, newcomer service and refugee housing, the city strives to address homelessness, 
-                        housing insecurity, and affordability challenges targeting different groups of people. 
-                        In the choropleth map, we can also see that certain neighborhoods with a higher concentration of social housing units 
-                        also exhibit limited transit accessibility. This underscores the need for the development of transit-oriented and 
-                        walkable alternative housing options, ensuring equitable access to transportation and fostering inclusive, 
-                        livable communities across the city.
-                    </p>
-                </div>
-                <div class="col-sm-9"><img src="image/development_socialhousing.jpg" class="img-fluid"></div>
-            </div>
-            
-            </div>
-    </div>
-
-    <!-- Tab 2 -->
-    <div id="Tab2" class="tabcontent">
-        <div class="container">
-            <!-- insert image -->
-            <img src="image/torontomap.png" class="img-fluid">
-            <br>
-            <br>
-            <h5><strong>Future Actions Inside the Yellowbelt: Housing Solutions</strong></h5>
-            <br>
-            <p>
-                In addition to exploring the potential relaxation of zoning restrictions within Toronto's yellowbelt 
-                to accommodate a broader spectrum of housing options, innovative solutions are emerging to address the affordability challenge. 
-                Urban designers and architects are actively engaged in reimagining the existing housing stock within the yellowbelt, 
-                with a focus on converting single detached homes into multiplexes through thoughtful design interventions. 
-            </p>
-            <p>
-                This approach not only maximizes land utilization but also fosters greater housing diversity within established neighborhoods. 
-                This adaptive reuse strategy offers residents a range of affordable housing choices within the confines of the yellowbelt's 
-                zoning constraints. By repurposing and adapting existing structures, these initiatives also strive to 
-                preserve the unique character and charm of the yellowbelt communities.
-            </p>
-            <br>
 
         </div>
-
-        <!-- insert cards -->
-        <div id="Tab2" class="container">
-            <div class="row row-cols-2 row-cols-md-3">
-
-                <!-- card 1 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <img class="card-img-top" src="image/rehousing.jpg" alt="Card image cap">
-                        <div class="card-body d-flex flex-column">
-                          <h5 class="card-title"><strong>ReHousing.ca</strong></h5>
-                          <p class="card-text">
-                            The ReHousing initiative hopes to address the issue of housing affordability 
-                            by offering 50 open-source architectural design templates to reconfigure the 
-                            13 most standard Toronto home types into multi-unit dwellings and 
-                            empower citizens to take advantage of new policy changes.
-                        </p>
-                          <a target="_blank" href="https://rehousing.ca/" class="mt-auto btn btn-outline-warning">Go to ReHousing.ca</a>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="container">
+                <!-- insert image -->
+                <img src="image/torontomap.png" class="img-fluid">
+                <br>
+                <br>
+                <h5><strong>Future Actions Inside the Yellowbelt: Housing Solutions</strong></h5>
+                <br>
+                <p>
+                    In addition to exploring the potential relaxation of zoning restrictions within Toronto's yellowbelt 
+                    to accommodate a broader spectrum of housing options, innovative solutions are emerging to address the affordability challenge. 
+                    Urban designers and architects are actively engaged in reimagining the existing housing stock within the yellowbelt, 
+                    with a focus on converting single detached homes into multiplexes through thoughtful design interventions. 
+                </p>
+                <p>
+                    This approach not only maximizes land utilization but also fosters greater housing diversity within established neighborhoods. 
+                    This adaptive reuse strategy offers residents a range of affordable housing choices within the confines of the yellowbelt's 
+                    zoning constraints. By repurposing and adapting existing structures, these initiatives also strive to 
+                    preserve the unique character and charm of the yellowbelt communities.
+                </p>
+                <br>
+    
+            </div>
+    
+            <!-- insert cards -->
+            <div id="Tab2" class="container">
+                <div class="row row-cols-2 row-cols-md-3">
+    
+                    <!-- card 1 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="image/rehousing.jpg" alt="Card image cap">
+                            <div class="card-body d-flex flex-column">
+                              <h5 class="card-title"><strong>ReHousing.ca</strong></h5>
+                              <p class="card-text">
+                                The ReHousing initiative hopes to address the issue of housing affordability 
+                                by offering 50 open-source architectural design templates to reconfigure the 
+                                13 most standard Toronto home types into multi-unit dwellings and 
+                                empower citizens to take advantage of new policy changes.
+                            </p>
+                              <a target="_blank" href="https://rehousing.ca/" class="mt-auto btn btn-outline-warning">Go to ReHousing.ca</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- card 2 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <img class="card-img-top" src="image/housing.jpg" alt="Card image cap">
-                        <div class="card-body d-flex flex-column">
-                          <h5 class="card-title"><strong>Housing Multitudes</strong></h5>
-                          <p class="card-text">
-                            Using Toronto as a laboratory, the study and exhibition Housing Multitudes: 
-                            Reimagining the Landscapes of Suburbia unlocks the DNA of the suburb to create a 
-                            composite “big picture” of how the urbanism that characterizes many North American cities 
-                            can be transformed for the greater benefit of all.
-                        </p>
-                          <a target="_blank" href="https://www.daniels.utoronto.ca/events/1666305000/opening-housing-multitudes-reimagining-landscapes-suburbia" class="mt-auto btn btn-outline-warning">Go to Housing Multitudes</a>
+    
+                    <!-- card 2 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="image/housing.jpg" alt="Card image cap">
+                            <div class="card-body d-flex flex-column">
+                              <h5 class="card-title"><strong>Housing Multitudes</strong></h5>
+                              <p class="card-text">
+                                Using Toronto as a laboratory, the study and exhibition Housing Multitudes: 
+                                Reimagining the Landscapes of Suburbia unlocks the DNA of the suburb to create a 
+                                composite “big picture” of how the urbanism that characterizes many North American cities 
+                                can be transformed for the greater benefit of all.
+                            </p>
+                              <a target="_blank" href="https://www.daniels.utoronto.ca/events/1666305000/opening-housing-multitudes-reimagining-landscapes-suburbia" class="mt-auto btn btn-outline-warning">Go to Housing Multitudes</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- card 3 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <img class="card-img-top" src="image/smart_density.jpg" alt="Card image cap">
-                        <div class="card-body d-flex flex-column">
-                          <h5 class="card-title"><strong>Smart Density</strong></h5>
-                          <p class="card-text">
-                            Smart Density is an architecture and planning firm dedicated to crafting innovative solutions 
-                            for urban living and achieving smart densities in the urban landscape of Toronto. 
-                            They are specialized in designing efficient, sustainable, and community-centric spaces that 
-                            respond to the evolving needs of the cityscape.
-                        </p>
-                          <a target="_blank" href="https://smartdensity.com/" class="mt-auto btn btn-outline-warning">Go to Smart Density</a>
+    
+                    <!-- card 3 -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="image/smart_density.jpg" alt="Card image cap">
+                            <div class="card-body d-flex flex-column">
+                              <h5 class="card-title"><strong>Smart Density</strong></h5>
+                              <p class="card-text">
+                                Smart Density is an architecture and planning firm dedicated to crafting innovative solutions 
+                                for urban living and achieving smart densities in the urban landscape of Toronto. 
+                                They are specialized in designing efficient, sustainable, and community-centric spaces that 
+                                respond to the evolving needs of the cityscape.
+                            </p>
+                              <a target="_blank" href="https://smartdensity.com/" class="mt-auto btn btn-outline-warning">Go to Smart Density</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+    
+                    <div>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+            </div>
 
-                <div>
-                    <br>
-                    <br>
-                    <br>
-                </div>
         </div>
+    </div>
+
+
+        
     </div>
 
         <script src="script_future.js"></script>
