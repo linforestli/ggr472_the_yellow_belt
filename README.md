@@ -19,6 +19,11 @@ Access the live web map [here](https://linforestli.github.io/ggr472_the_yellow_b
 - `script_main.js`: JavaScript file that creates and visualizes and web map using Mapbox GL JS
 - `script_future.js`: JavaScript file that creates the interactions between two tabs in future actions page
 
+## Interactivity  
+- Geocoder for searching locations within Toronto area.
+- Checkbox based filter to turn different zoning by-law and building height layer on and off to enhance the readability of the map.
+- Pop-ups on click to show the average building height by neighborhood.
+- Pinning and hover on map to allow dynamic 3D views of the building extrusion.
 
 ## Data Sources
 
