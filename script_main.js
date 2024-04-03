@@ -232,6 +232,37 @@ initialize();
     Building Height
     --------------------------------------------------------------------*/
 
+    // add building height by neighborhood layer 
+    map.addSource('building-height_neighborhood', {
+        type: 'vector',
+        url: 'mapbox://linforestli.ci2evl0o'
+    });
+
+    map.addLayer({
+        'id': 'building_height_fill6',
+        'type': 'fill', 
+        'source': 'building-height_neighborhood',
+        'source-layer': 'Downloads-6kfpdy',
+        'paint':{
+            // Define fill color based on population
+            'fill-color': [
+                'step', 
+                ['get', 'height'], 
+                '#C1E7EA', // Colour assigned to any values < first step
+                5.81, '#82c0E0', // Colours assigned to values >= each step
+                8.07, '#82A4E0',
+                12.33, '#82BBE0',
+                22.43, '#8293E0',
+                50.86, '#9A82E0'
+            ],
+            'fill-outline-color': 'white'
+        },
+        'layout': {
+            // Make the layer invisible by default.
+            'visibility': 'none'
+        }
+    });
+
     // add building layer 1
     map.addSource('building-height1', {
         type: 'vector',
@@ -379,6 +410,8 @@ initialize();
         },
     });
 
+    
+
     // Get reference to the checkbox
     const height1Checkbox = document.getElementById('height1Checkbox');
 
@@ -439,7 +472,56 @@ initialize();
         }
     });
 
+    // Get reference to the checkbox
+    const height6Checkbox = document.getElementById('height6Checkbox');
+
+    // Add event listener to checkbox to toggle layer visibility
+    height6Checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            map.setLayoutProperty('building_height_fill6', 'visibility', 'visible');
+            // Display the legend
+            legend2.style.display = 'block';
+        } else {
+        map.setLayoutProperty('building_height_fill6', 'visibility', 'none');
+        // Hide the legend
+        legend2.style.display = "none";
+        }
+    });
+
+    
+
 });
+
+/*--------------------------------------------------------------------
+CREATE pop-up window
+--------------------------------------------------------------------*/
+// Add event listener to the map for click events on the 'building_height_fill6' layer
+// 1) Return the name of the area in the console
+map.on('click', 'building_height_fill6', (e) => {
+    console.log(e);   
+    let neiname = e.features[0].properties.AREA_DE8; // Extract the name of the area from the clicked feature's properties
+    console.log(neiname); // Log the name of the area to the console
+
+});
+
+// 2) Event listener for changing cursor on mouse enter
+map.on('mouseenter', 'building_height_fill6', () => {
+    map.getCanvas().style.cursor = 'pointer'; 
+});
+// 3) Event listener for changing cursor on mouse leave
+map.on('mouseleave', 'building_height_fill6', () => {
+    map.getCanvas().style.cursor = ''; 
+});
+
+// 4) Event listener for showing popup on click
+map.on('click', 'building_height_fill6', (e) => {
+    new mapboxgl.Popup() //Declare new popup object on each click
+        .setLngLat(e.lngLat) //Use method to set coordinates of popup based on mouse click location
+        .setHTML("<b>Neighborhood:</b> " + e.features[0].properties.AREA_DE8 + "<br>" +
+            "<b>Average Building Height:</b> " + e.features[0].properties.height) //Use click event properties to write text for popup
+        .addTo(map); //Show popup on map
+});
+
 
 
 
@@ -502,3 +584,46 @@ legendlabels.forEach((label, i) => {
 
     legend.appendChild(item); //add row to the legend
 });
+
+// additional legend
+const legendlabels2 = [
+    '0 - 5.81',
+    '5.81 - 8.07',
+    '8.07 - 12.33',
+    '12.33 - 22.43',
+    '22.43 - 50.86',
+    '> 50.86'
+];
+
+const legendcolours2 = [
+    '#C1E7EA', 
+    '#82c0E0', 
+    '#82A4E0',
+    '#82BBE0',
+    '#8293E0',
+    '#9A82E0'
+];
+
+//Declare legend variable using legend div tag
+const legend2 = document.getElementById('neighborhood-legend');
+
+//For each layer create a block to put the colour and label in
+legendlabels2.forEach((label, i) => {
+    const color = legendcolours2[i];
+
+    const item = document.createElement('div'); //each layer gets a 'row' - this isn't in the legend yet, we do this later
+    const key = document.createElement('span'); //add a 'key' to the row. A key will be the color circle
+
+    key.className = 'legend-key'; //the key will take on the shape and style properties defined in css
+    key.style.backgroundColor = color; // the background color is retreived from teh layers array
+
+    const value = document.createElement('span'); //add a value variable to the 'row' in the legend
+    value.innerHTML = `${label}`; //give the value variable text based on the label
+
+    item.appendChild(key); //add the key (color cirlce) to the legend row
+    item.appendChild(value); //add the value to the legend row
+
+    legend2.appendChild(item); //add row to the legend
+});
+
+

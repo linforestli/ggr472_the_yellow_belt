@@ -62,6 +62,9 @@
     <!-- LEGEND -->
     <div id='legend' class='legend'>
     </div>
+    <div id='neighborhood-legend' class='legend'>
+        <h5>Average Building Height</h5>
+    </div>
 
     <!-- nav elements -->
     <div class='map-overlay'>
@@ -106,22 +109,22 @@
                             <label class="list-group-item" id="UANDT">
                             <input class="form-check-input me-1" type="checkbox" id="gen_zone_2" checked><label for="gen_zone_2">Utility and Transportation</label><br>
                             </label>
-                            <label class="list-group-item" id="Residential">
+                            <label class="list-group-item" id="EmpInd">
                             <input class="form-check-input me-1" type="checkbox" id="gen_zone_4" checked><label for="gen_zone_4">Employment Industrial</label><br>
                             </label>
-                            <label class="list-group-item" id="Residential">
+                            <label class="list-group-item" id="Insti">
                             <input class="form-check-input me-1" type="checkbox" id="gen_zone_5" checked><label for="gen_zone_5">Institutional</label><br>
                             </label>
-                            <label class="list-group-item" id="Residential">
+                            <label class="list-group-item" id="CRE">
                             <input class="form-check-input me-1" type="checkbox" id="gen_zone_6" checked><label for="gen_zone_6">Commercial Residential Employment</label><br>
                             </label>
-                            <label class="list-group-item" id="Residential">
+                            <label class="list-group-item" id="RA">
                             <input class="form-check-input me-1" type="checkbox" id="gen_zone_101" checked><label for="gen_zone_101">Residential Apartment</label><br>
                             </label>
-                            <label class="list-group-item" id="Residential">
+                            <label class="list-group-item" id="Commercial">
                             <input class="form-check-input me-1" type="checkbox" id="gen_zone_201" checked><label for="gen_zone_201">Commercial</label><br>
                             </label>
-                            <label class="list-group-item" id="Residential">
+                            <label class="list-group-item" id="CR">
                             <input class="form-check-input me-1" type="checkbox" id="gen_zone_202" checked><label for="gen_zone_202">Commercial Residential</label><br>
                             </label>
                         </div>
@@ -141,13 +144,13 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="list-group my-2">
-                        <label class="list-group-item" id="Residential">
+                        <label class="list-group-item" id="SDZ">
                             <input class="form-check-input me-1" type="checkbox" id="detachedCheckbox"><label for="detachedCheckbox">Single Detached Zones (Yellowbelt)</label><br>
                         </label>
-                        <label class="list-group-item" id="Residential">
+                        <label class="list-group-item" id="Mixed">
                             <input class="form-check-input me-1" type="checkbox" id="mixedCheckbox"><label for="mixedCheckbox">Mixed Use Zones</label><br>
                         </label>
-                        <label class="list-group-item" id="Residential">
+                        <label class="list-group-item" id="Other">
                             <input class="form-check-input me-1" type="checkbox" id="otherCheckbox"><label for="otherCheckbox">Other Residential Zones</label><br>
                         </label>
                     </div>
@@ -167,20 +170,23 @@
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="list-group my-2">
-                        <label class="list-group-item" id="Residential">
+                        <label class="list-group-item" id="056">
                             <input class="form-check-input me-1" type="checkbox" id="height1Checkbox" checked><label for="height1Checkbox">0 - 5.6m</label><br>
                         </label>
-                        <label class="list-group-item" id="Residential">
+                        <label class="list-group-item" id="5625">
                             <input class="form-check-input me-1" type="checkbox" id="height2Checkbox" checked><label for="height2Checkbox">5.6 - 25m</label><br>
                         </label>
-                        <label class="list-group-item" id="Residential">
+                        <label class="list-group-item" id="2580">
                             <input class="form-check-input me-1" type="checkbox" id="height3Checkbox" checked><label for="height3Checkbox">25 - 80m</label><br>
                         </label>
-                        <label class="list-group-item" id="Residential">
+                        <label class="list-group-item" id="R80256">
                             <input class="form-check-input me-1" type="checkbox" id="height4Checkbox" checked><label for="height4Checkbox">80 - 256m</label><br>
                         </label>
-                        <label class="list-group-item" id="Residential">
+                        <label class="list-group-item" id="256545">
                             <input class="form-check-input me-1" type="checkbox" id="height5Checkbox" checked><label for="height5Checkbox">256 - 545m</label><br>
+                        </label>
+                        <label class="list-group-item" id="heatmap">
+                            <input class="form-check-input me-1" type="checkbox" id="height6Checkbox"><label for="height6Checkbox">Average Building Height by Neighborhood</label><br>
                         </label>
                     </div>
                 </div>

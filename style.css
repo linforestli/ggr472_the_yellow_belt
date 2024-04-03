@@ -137,4 +137,9 @@
 .mapboxgl-ctrl.mapboxgl-ctrl-group { position: absolute; top: 60px; right: 5px;}
 
 
+#neighborhood-legend {
+  display: none;
+  right: 260px;
+}
+
 
