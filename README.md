@@ -6,7 +6,7 @@ The purpose of this project is to provide a web map of Toronto’s building foot
 
 ## Accessing the Webmap
 
-Access the live web map [here](https://).
+Access the live web map [here](https://linforestli.github.io/ggr472_the_yellow_belt/).
 
 ## Repository Contents
 
